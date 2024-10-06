@@ -186,7 +186,7 @@ function App() {
           <>
             Preprocessing seismic data directly on rovers and detectors plays a crucial role in optimizing both data transmission and power consumption.<br /><br />
             In the harsh environments of space, where power and communication bandwidth are limited, transmitting raw, unfiltered data back to Earth is inefficient and expensive. By preprocessing data on the rover itself, algorithms such as Random Forest can analyze and filter relevant seismic events in real time. This enables the rover to:<br /><br />
-            * Save Energy: Only transmitting significant and processed data conserves power, a critical resource for the rover’s longevity.<br /><br />
+            * Save Energy: Only transmitting significant and processed data conserves power, a critical resource for the rover's longevity.<br /><br />
             * Improve Efficiency: Reduces the amount of unnecessary or redundant data transmitted, ensuring that only the most valuable seismic information reaches scientists on Earth.<br /><br />
             * Faster Insights: By sending processed data, scientists can receive and analyze important seismic events more quickly, leading to faster discoveries.<br /><br />
             With 89% accuracy, our Random Forest algorithm identifies relevant seismic activity, ensuring that only meaningful data is sent back to Earth in near real-time. This approach enhances the efficiency of space missions, maximizing both the rover’s lifespan and the scientific value of the data collected.
