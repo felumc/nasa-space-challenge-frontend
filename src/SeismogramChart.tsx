@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
+import { ChartOptions } from "chart.js";
 import Modal from './Modal';
 import {
   Chart as ChartJS,
@@ -82,24 +83,24 @@ const SeismogramChart: React.FC<ModalProps> = ({ object, status }) => {
     ],
   };
 
-  const chartOptions = {
+  const chartOptions: ChartOptions<'line'> = {
     responsive: true,
-    animation: false,
+    animation: false as const,
     scales: {
       x: {
-        type: "category",
+        type: 'category' as const,
         ticks: {
-          color: "white", // Change x-axis label color
+          color: "white",
         },
       },
       y: {
         title: {
           display: true,
-          text: "STA/LTA Ratio", // Y-axis title
-          color: "white", // Change y-axis title color
+          text: "STA/LTA Ratio",
+          color: "white",
         },
         ticks: {
-          color: "white", // Change y-axis label color
+          color: "white",
         },
         min: 0,
         max: 5,
@@ -108,11 +109,13 @@ const SeismogramChart: React.FC<ModalProps> = ({ object, status }) => {
     plugins: {
       legend: {
         labels: {
-          color: "white", // Change legend text color
+          color: "white",
         },
       },
     },
   };
+  
+  
 
   return (
     <>
