@@ -31,7 +31,7 @@ const SeismogramChart: React.FC<ModalProps> = ({ object, status }) => {
     // Function to generate random seismic data
     const addRandomData = () => {
       // Random value between -100 and 100
-      const randomValue = Math.floor(Math.random() * 200) - 100;
+      const randomValue = Math.floor(Math.random() * 5);
       const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false }); // Current time
 
       // Add the new random value and timestamp
@@ -71,6 +71,14 @@ const SeismogramChart: React.FC<ModalProps> = ({ object, status }) => {
         fill: false,
         tension: 0.4, // Smooth the line
       },
+      {
+        label: "Threshold",
+        data: Array(20).fill(2), // Array of 20 values of 50
+        borderColor: "red",
+        borderWidth: 1,
+        borderDash: [5, 5], // Dashed line
+        fill: false,
+      }
     ],
   };
 
@@ -93,8 +101,8 @@ const SeismogramChart: React.FC<ModalProps> = ({ object, status }) => {
         ticks: {
           color: "white", // Change y-axis label color
         },
-        min: -100,
-        max: 100,
+        min: 0,
+        max: 5,
       },
     },
     plugins: {
@@ -139,7 +147,7 @@ const SeismogramChart: React.FC<ModalProps> = ({ object, status }) => {
         isVisible={isModalVisible} 
         onClose={() => setModalVisible(false)} 
         title={"Random Forest Processing on " + object}
-        description="The high cost of power to send constant seismic data is alleviated by our Random Forest Algorithm, which detects relevant seismic data and sends it back to Earth with an accuracy of 89% in real time, thus saving power."
+        description="The high cost of power to send constant seismic data is alleviated by our Random Forest Algorithm, which detects relevant seismic data and sends it back to Earth with an accuracy of 87.8% in real time, thus saving power."
         object={object}
       />
     </div>

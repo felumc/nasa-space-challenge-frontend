@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import SeismogramChart from "./SeismogramChart.tsx";
+import Modal from "./Modal.tsx";
 
 function App() {
   const [currentModelIndex, setCurrentModelIndex] = useState(0);
   const [status, setStatus] = useState(false); // New state to track status
+  const [is2ndModalVisible, set2ndModalVisible] = useState(false);
 
   const models = [
     {
@@ -36,6 +38,10 @@ function App() {
     // Cleanup the timer if the component unmounts
     return () => clearTimeout(timer);
   }, []);
+
+  const handleModalChange = () => {
+    set2ndModalVisible(true);
+  }
 
   return (
     <>
@@ -147,6 +153,47 @@ function App() {
           during 2024 NASA Space Challenges Hackathon.
         </p>
       </div>
+      <div
+        style={{
+          position: "absolute",
+          bottom: 20,
+          left: 0,
+          width: "300px",
+          height: "60px",
+          zIndex: 1002, // Ensure it's above the chart
+        }}
+      >
+        <button
+          onClick={() => handleModalChange()}
+          style={{
+            borderRadius: "10px",
+            padding: "10px 20px",
+            backgroundColor: currentModel.name  === "Mars" ? "rgba(208,156,88,0.7)": "rgba(255, 255, 255, 0.5)", // Customize button color
+            color: "white",
+            border: "none",
+            cursor: "pointer",
+            fontSize: "16px",
+          }}
+        >
+          Why preprocess the data?
+        </button>
+      </div>
+      <Modal 
+        isVisible={is2ndModalVisible} 
+        onClose={() => set2ndModalVisible(false)} 
+        title="The Critical Role of Onboard Data Preprocessing for Space Missions"
+        description={
+          <>
+            Preprocessing seismic data directly on rovers and detectors plays a crucial role in optimizing both data transmission and power consumption.<br /><br />
+            In the harsh environments of space, where power and communication bandwidth are limited, transmitting raw, unfiltered data back to Earth is inefficient and expensive. By preprocessing data on the rover itself, algorithms such as Random Forest can analyze and filter relevant seismic events in real time. This enables the rover to:<br /><br />
+            * Save Energy: Only transmitting significant and processed data conserves power, a critical resource for the rover’s longevity.<br /><br />
+            * Improve Efficiency: Reduces the amount of unnecessary or redundant data transmitted, ensuring that only the most valuable seismic information reaches scientists on Earth.<br /><br />
+            * Faster Insights: By sending processed data, scientists can receive and analyze important seismic events more quickly, leading to faster discoveries.<br /><br />
+            With 89% accuracy, our Random Forest algorithm identifies relevant seismic activity, ensuring that only meaningful data is sent back to Earth in near real-time. This approach enhances the efficiency of space missions, maximizing both the rover’s lifespan and the scientific value of the data collected.
+          </>
+        }
+        object={currentModel.name}
+      />
     </>
   );
 }
