@@ -1,0 +1,51 @@
+.warning-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5); /* Background overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1001; /* Ensure it's on top */
+  }
+  
+  .warning-modal-container {
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 0, 0, 0.8); /* Red background */
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    width: 500px;
+  }
+  
+  .warning-icon {
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+  }
+  
+  .warning-modal-content h2 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .warning-modal-content p {
+    margin: 20px 0 20px 20;
+    font-size: 14px;
+  }
+  
+  .warning-modal-close {
+    margin-top: 10px;
+    background-color: white;
+    color: red;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+    border-radius: 15px;
+    font-weight: bold;
+  }
+  
