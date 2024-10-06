@@ -50,7 +50,7 @@ const SeismogramChart: React.FC<ModalProps> = ({ object, status }) => {
       };
 
       // Change the description based on the status
-        setDescription(status ? "The seismic activity is being processed in real-time on Mars." : "No relevant seismic activity is being sent back to Earth.");
+        setDescription(status ? "The seismic activity is being processed in real-time on " + object : "No relevant seismic activity is being sent back to Earth.");
 
     // Add random data every second
     const intervalId = setInterval(status == true ? addRandomData: addNoData, 200);
